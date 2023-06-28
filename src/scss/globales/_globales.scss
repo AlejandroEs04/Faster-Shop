@@ -1,0 +1,63 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+
+    display: flex;
+    height: 100%;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-family: $fuente_principal;
+    line-height: 1.5;
+    margin: 0;
+    background-color: $color1;
+
+    flex: 1;
+}
+main {
+    height: 100%;
+}
+a {
+    text-decoration: none;
+    color: $blanco;
+}
+p {
+    font-size: 1.8rem;
+    margin: 0.5rem;
+}
+h1, h2, h3 {
+    font-family: $fuente_principal;
+    font-weight: $bold;
+    text-align: center;
+    margin: 1rem;
+}
+h1 {
+    font-size: 3.5rem;
+}
+h2 {
+    font-size: 3.2rem;
+}
+h3 {
+    font-size: 3rem;
+}
+h4 {
+    font-size: 2.3rem;
+    font-weight: $bold;
+    text-align: start;
+    margin: 0;
+}
+p {
+    margin: 0;
+}
+.alerta {
+    text-align: center;
+    font-size: 1.8rem;
+}
+.error {
+    color: red;
+}
+.exito {
+    color: green;
+}

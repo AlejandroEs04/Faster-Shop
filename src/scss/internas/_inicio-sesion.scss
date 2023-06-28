@@ -1,0 +1,88 @@
+.negro {
+    background-color: $negro;
+    color: $blanco;
+    height: 100%;
+}
+.contenedor-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 5rem 0;
+}
+.texto-color-gris {
+    color: $gris;
+    transition: all linear 0.1s;
+}
+.texto-color-gris:hover {
+    color: $blanco;
+}
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 5%;
+    padding: 2rem 5rem;
+
+    label {
+        font-size: 2.2rem;
+        font-weight: $bold;
+        margin-bottom: 0.5rem;
+    }
+    input:not(:last-child) {
+        width: 80%;
+        font-size: 2rem;
+        border: none;
+        background-color: transparent;
+        border-bottom: 2px solid $negro;
+        margin-bottom: 2rem;
+        height: 3rem;
+    }
+}
+.contenedor-formulario {
+    background-color: $blanco;
+    margin: 5rem 5rem;
+    border-radius: 2rem;
+    h3 {
+        margin-top: 4rem;
+    }
+}
+.boton-enviar {
+    border-radius: 1rem;
+    width: 15rem;
+    padding: 0.8rem;
+    font-size: 2rem;
+    border: none;
+    color: $blanco;
+
+    background-color: $colorPrimario;
+
+    transition: all ease 0.2s;
+}
+.boton-enviar:hover {
+    background-color: lighten($color: $colorPrimario, $amount: 10);
+}
+@media (max-width: $tablet) {
+    .mitad {
+        display: flex;
+        flex-direction: column;
+    }
+    .contenedor-texto {
+        width: 100%;
+        border-radius: 0;
+        padding: 2rem;
+        margin-bottom: 1rem;
+    }
+    .contenedor-formulario {
+        width: 100%;
+        background-color: transparent;
+    }
+    .formulario-login {
+        padding: 0;
+    }
+    #formulario {
+        height: auto;
+    }
+}

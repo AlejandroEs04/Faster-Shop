@@ -1,0 +1,48 @@
+.formulario-admin {
+    padding: 3rem;
+    margin: 2rem 15%;
+    border-radius: 1rem;
+    background-color: $blanco;
+    border: 1px solid $negro;
+
+    a {
+        font-size: 1.5rem;
+        font-weight: $regular;
+        color: $negro;
+        margin-top: 0.5rem;
+
+        transition: all ease 0.2s;
+    }
+    a:hover {
+        color: $colorPrimario;
+    }
+
+    .formulario {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: start;
+        
+        label {
+            text-align: start;
+            font-size: 2rem;
+            font-weight: $bold;
+        }
+        input, textarea, select {
+            font-size: 1.8rem;
+            width: 90%;
+        }
+        input:not(:last-child), textarea {
+            margin-bottom: 1.5rem;
+        }
+        .boton-enviar {
+            margin-top: 2rem;
+            max-width: min-content;
+        }
+    }
+}
+@media (max-width: $telefono) {
+    .formulario-admin {
+        margin: 2rem 5%;
+    }
+}

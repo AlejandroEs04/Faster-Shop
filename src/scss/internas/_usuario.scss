@@ -1,0 +1,19 @@
+.opciones {
+    display: flex;
+    flex-direction: column;
+    
+}
+.opcion {
+    border: 1px solid $negro;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    color: $negro;
+}
+@media (min-width: $desktop) {
+    .opciones {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+}

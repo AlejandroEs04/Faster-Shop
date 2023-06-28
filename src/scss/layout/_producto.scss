@@ -1,0 +1,105 @@
+.contenedor-producto {
+    margin: 5rem;
+    border: 1px solid $negro;
+    border-radius: 1rem;
+    background-color: $blanco;
+
+    display: flex;
+    flex-direction: column;
+
+    img {
+        border-radius: 1rem;
+        border: none;
+        padding: 3rem;
+    }
+
+    .imagen-producto {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: 100%;
+            max-width: 60rem;
+        }
+    }
+
+    .informacion-producto {
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        text-align: start;
+
+        p {
+            font-size: 1.8rem;
+            margin: 0;
+            text-justify: 1.5;
+            margin-bottom: 1rem;
+        }
+        span {
+            font-size: 2.2rem;
+            font-weight: 700;
+            display: block;
+        }
+        h2 {
+            text-align: start;
+            margin: 0;
+            margin-bottom: 5rem;
+        }
+    }
+}
+.formulario-producto {
+    margin-top: 3rem;
+    .formulario-compra {
+        display: flex;
+        flex-direction: column;
+    }
+    .input-number {
+        width: 12rem;
+        font-size: 1.5rem;
+        height: 3rem;
+        margin-bottom: 1rem;
+    }
+    label {
+        font-size: 1.8rem;
+    }
+}
+.boton-comprar {
+    background-color: $colorPrimario;
+    color: white;
+    font-weight: 600;
+    transition: all linear 0.2s;
+}
+.boton-carrito {
+    background-color: #F2AC00;
+    font-weight: 600;
+    transition: all linear 0.2s;
+}
+.boton-carrito:hover {
+    background-color: darken($color: #F2AC00, $amount: 10);
+}
+.boton-comprar:hover {
+    background-color: lighten($color: #11234d, $amount: 10);
+}
+@media (min-width: $desktop) {
+    .contenedor-producto {
+        flex-direction: row;
+        
+
+        img {
+            
+            padding: none;
+        }
+    }
+
+    .imagen-producto {
+        width: 40%;
+        border-right: 1px solid $negro;
+    }
+    .informacion-producto {
+        width: 60%;
+    }
+}

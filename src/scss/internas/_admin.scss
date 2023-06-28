@@ -1,0 +1,88 @@
+@media (max-width: $tablet) {
+    .contenedor-admin {
+        display: flex;
+        flex-direction: column;
+    }
+    .contenedor {
+        width: 100%;
+    }
+}
+.contenedor {
+    padding: 2rem;
+}
+.contenedor-admin {
+    align-items: start;
+}
+.admin {
+    a {
+        background-color: $colorPrimario;
+        color: $blanco;
+        border: 1px solid transparent;
+        padding: 0.5rem 1rem;
+        font-size: 1.5rem;
+        border-radius: 1rem;
+
+        transition: all linear 0.2s;
+    }
+    a:hover {
+        background-color: transparent;
+        border: 1px solid $colorPrimario;
+        color: $negro;
+    }
+
+    .no-fondo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        img {
+            width: 2rem;
+        }
+    }
+    .no-fondo:hover {
+        border: none;
+    }
+}
+.accion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+        font-weight: $regular;
+    }
+}
+.contenedor-tabla {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+.barra-busqueda {
+    width: 90%;
+    margin: 1rem;
+    font-size: 1.8rem;
+}
+table {
+    font-size: 1.5rem;
+    border-style: solid;
+    padding: 1rem;
+    width: 100%;
+    
+    td {
+        img {
+            width: 8rem;
+        }
+    }
+
+    .no {
+        height: 4rem;
+        border-bottom: 1px solid $negro;
+    }
+}
+.contenedor-admin {
+    grid-template-columns: 60% auto;
+}

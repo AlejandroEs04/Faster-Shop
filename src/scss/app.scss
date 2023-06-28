@@ -1,0 +1,18 @@
+// Globales
+@import 'globales/variables';
+@import 'globales/globales';
+@import 'globales/mixins';
+@import 'globales/utilidades';
+
+// Internas
+@import 'internas/inicio-sesion';
+@import 'internas/filtros';
+@import 'internas/admin';
+@import 'internas/usuario';
+
+// Layout
+@import 'layout/header';
+@import 'layout/categorias';
+@import 'layout/productosInicio';
+@import 'layout/producto';
+@import 'layout/formularioAdmin';

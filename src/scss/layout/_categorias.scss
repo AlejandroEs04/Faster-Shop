@@ -1,0 +1,36 @@
+.gris {
+    background-color: $gris;
+    border-bottom: 2px solid $negro;
+}
+.categorias {
+    margin: 2rem;
+
+    a {
+        margin-top: 3rem;
+    }
+}
+.categoria {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: $negro;
+
+    p {
+        font-size: 1.8rem;
+    }
+    .categoria-img {
+        width: 8rem;
+        height: 8rem;
+        background-color: $blanco;
+        border-radius: 50%;
+
+        transition: all ease-in 0.2s;
+    }
+}
+.categoria:hover {
+    .categoria-img {
+        background-color: $grisObscuro;
+    }
+}
