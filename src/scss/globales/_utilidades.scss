@@ -3,6 +3,9 @@
     align-items: center;
     height: 100%;
 }
+.contenedor {
+    margin: 2rem 10%;
+}
 .contenedor-grid2 {
     grid-template-columns: repeat(2, 1fr);
 }
@@ -15,11 +18,10 @@
 }
 .contenedor-blanco {
     background-color: $blanco;
-    margin: 3rem 10%;
     padding: 2rem;
     box-shadow:
-             0 0  0 2px rgb(255,255,255),
-             0.3em 0.3em 1em rgba(0,0,0,0.3);
+        0 0  0 2px rgb(255,255,255),
+        0.3em 0.3em 1em rgba(0,0,0,0.3);
     border-radius: 1rem;
 }
 .flexWrap {
@@ -41,8 +43,18 @@
     align-items: center;
 }
 .boton {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     padding: 1rem;
     border-radius: 1rem;
     border: none;
+}
+.btn-enviar {
+    background-color: $colorSecundario;
+    font-weight: $bold;
+    margin-top: 2rem;
+
+    transition: all ease-out 0.2s;
+}
+.btn-enviar:hover {
+    background-color: darken($color: $colorSecundario, $amount: 10);
 }

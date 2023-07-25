@@ -1,5 +1,5 @@
 <div class="contenedor-grid2 contenedor-admin">
-    <div class="contenedor">
+    <div class="contenedor2">
         <h2>Acciones</h2>
 
         <div class="acciones admin">
@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <div class="contenedor negro">
+    <div class="contenedor2 negro">
         <h2>Compras</h2>
     </div>
 </div>

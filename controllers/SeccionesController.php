@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Model\Carrito;
+use Model\Categorias;
 use Model\Productos;
 use Model\Usuarios;
 use MVC\Router;
@@ -18,6 +19,7 @@ class SeccionesController {
     public static function producto(Router $router) {
 
         $id = $_GET['id'];
+        $usuarioId = $_SESSION['id'];
         $errores = [];
         
 
@@ -32,6 +34,7 @@ class SeccionesController {
         $errores = $errores['error'];
 
         $router->render('paginas/producto', [
+            'usuarioId' => $usuarioId,
             'producto' => $producto,
             'errores' => $errores
         ]);
@@ -39,8 +42,15 @@ class SeccionesController {
 
     public static function categoria(Router $router) {
 
-        $router->render('paginas/categoria', [
+        $categoriaId = $_GET['tipo'];
+        $categorias = Categorias::all();
+        $categoriaUna = Categorias::findArray($categoriaId);
+        $productos = Productos::where('categoriaID', $categoriaId);
 
+        $router->render('paginas/categoria', [
+            'categoriasSeccion' => $categorias,
+            'categoriaUna' => $categoriaUna,
+            'productos' => $productos
         ]);
     }
 }

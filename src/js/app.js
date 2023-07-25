@@ -1,32 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
-  realizarBusqueda();
   //contenedorHeightSize();
   updateProductList();
-  search_barra();
 });
 
-const contenedorHeight = document.getElementById('formulario');
-const header = document.getElementById('header');
-
-// Darle a los div's un height de pantalla completa
-var windowHeight = window.innerHeight;
-var navHeight = header.clientHeight;
-
-var height = windowHeight - navHeight;
-
 // Obtener referencias a los elementos HTML
-const searchInput = document.getElementById('search-input');
+const searchInput = document.getElementById('search-input')
 const searchResults = document.getElementById('search-results');
 
 // Agregar un evento de escucha al input de búsqueda
 searchInput.addEventListener('input', function() {
   const searchText = searchInput.value.toLowerCase(); // Obtener el texto ingresado en minúsculas
 
+  console.log(searchText)
+
   // Limpiar los resultados anteriores
   searchResults.innerHTML = '';
 
   // Realizar la búsqueda y mostrar los resultados en tiempo real
   const results = realizarBusqueda(searchText);
+  console.log(results)
   results.forEach(function(result) {
     const li = document.createElement('li');
     li.textContent = result;
@@ -54,20 +46,17 @@ function realizarBusqueda(texto) {
   };
   xhr.send();
 }
-  
-function contenedorHeightSize() {
-  contenedorHeight.style.height = height + 'px';
-}
 
 // Barra de filtros
 function updateProductList() {
   // Obtener los valores seleccionados de los filtros
   var category = document.getElementById("category-filter").value;
   var price = document.getElementById("price-filter").value;
+  var proveedores = document.getElementById("proveedores-filter").value;
 
   // Hacer una solicitud AJAX para obtener los productos filtrados
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "/?category=" + category + "&price=" + price, true);
+  xhr.open("GET", "/?category=" + category + "&price=" + price + "&proveedores=" + proveedores, true);
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4 && xhr.status === 200) {
       // Actualizar el contenido de la lista de productos

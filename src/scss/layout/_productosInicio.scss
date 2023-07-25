@@ -15,16 +15,26 @@
     }
 }
 .catalogo {
-    margin: 2rem;
+    height: 100%;
+    padding: 4rem;
 
+    span {
+        color: lighten($color: $colorPrimario, $amount: 20);;
+    }
     h2 {
         margin-top: 0;
     }
 }
 .productos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill, 
+        minmax(
+            20rem, 1fr
+        )
+        
+    );
+    gap: 1.5rem;
 
     h2 {
         margin-bottom: 2rem;
@@ -42,6 +52,11 @@
     border-radius: 0.6rem;
     padding: 1rem;
     background-color: $blanco;
+
+    transition: all linear 0.2s 0.2s;
+}
+.producto:hover {
+    transform: scale(1.05);
 }
 .productoContenedor {
     color: $negro;
@@ -50,6 +65,22 @@
     }
     .precio {
         font-weight: $bold;
+        color: darken($color: $colorSecundario, $amount: 20);
+    }
+    .nomProducto {
+        border-top: 1px solid $negro;
+        padding: 1rem;
+        font-size: 1.6rem;
+        font-weight: $bold;
+    }
+    .descProducto {
+        font-size: 1.2rem;
+        margin: 1rem 0;
+    }
+    .invProducto {
+        margin-top: 1rem;
+        font-size: 1.4rem;
+
     }
 }
 @media (max-width: $tablet) {

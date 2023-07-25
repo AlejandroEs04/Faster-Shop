@@ -1,0 +1,23 @@
+.contenedor-comprar {
+    .vista-comprar {
+        border-bottom: 1px solid $negro;
+        padding: 2rem 10%;
+        background-color: $gris;
+        h2, p {
+            margin: 0;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 30% auto;
+            align-items: center;
+        }
+        .grid2 p {
+            font-weight: $bold;
+        }
+        .grid2 span {
+            text-transform: uppercase;
+            color: $colorPrimario
+        }
+    }
+}

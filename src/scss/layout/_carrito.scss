@@ -1,0 +1,103 @@
+.contenedor-carrito {
+    display: grid;
+    grid-template-columns: 65% auto;
+    margin-top: 5rem;
+    gap: 5rem;
+
+    .flex {
+        justify-content: start;
+        text-align: start;
+
+        h3, p {
+            margin: 1rem;
+        }
+
+        h3 {
+            border-right: 1px solid $negro;
+            padding-right: 2rem;
+        }
+
+        p {
+            font-size: 1.3rem;
+        }
+    }
+
+    .contenedor-blanco {
+        margin: 0;
+    }
+}
+.contenedor-carrito-producto {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $gris;
+    border-top: 1px solid $gris;
+    padding: 2rem 5rem;
+    align-items: center;
+
+    .imagen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+    }
+    img {
+        width: 50%;
+    }
+    .texto {
+        width: 50%;
+    }
+    form .btn, form .eliminar{
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        font-weight: $bold;
+
+        transition: all ease 0.2s;
+    }
+    form .actualizar {
+        background-color: $colorSecundario;
+    }
+    form .btn:hover {
+        background-color: darken($color: $colorSecundario, $amount: 10);
+    }
+    .eliminar {
+        background-color: red;
+        color: $blanco;
+    }
+    .eliminar:hover {
+        background-color: darken($color: red, $amount: 10);
+    }
+}
+.texto {
+    font-weight: $bold;
+
+    span {
+        font-weight: $regular;
+    }
+}
+.textoPagar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: min-content;
+    p {
+        font-size: 2rem;
+    }
+}
+.textoPagar form {
+    display: flex;
+    flex-direction: column;
+    label {
+        font-size: 1.5rem;
+    }
+    input {
+        font-size: 1.8rem;
+    }
+}
+.textoNoProductos {
+    margin-top: 5rem;
+    color: $colorPrimario;
+}
+.textoNoProductos span {
+    color: darken($color: $colorSecundario, $amount: 10);
+}

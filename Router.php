@@ -29,7 +29,8 @@ class Router {
         $rutas_protegidas = [
             '/carrito',
             '/usuario',
-            '/admin '
+            '/admin ',
+            '/comprar'
         ];
 
         $rutas_admin = [
@@ -71,7 +72,7 @@ class Router {
         if($fn) {
             call_user_func($fn, $this);
         } else {
-            echo "Pagina no encontrada";
+            incluirTemplate('Error404');
         }
     }
 

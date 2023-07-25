@@ -31,6 +31,7 @@ class ComposerStaticInite3b6202bbfdc046c69359270174e608a
         ),
         'C' => 
         array (
+            'Curl\\' => 5,
             'Controllers\\' => 12,
             'Classes\\' => 8,
         ),
@@ -61,6 +62,10 @@ class ComposerStaticInite3b6202bbfdc046c69359270174e608a
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'Curl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
         ),
         'Controllers\\' => 
         array (

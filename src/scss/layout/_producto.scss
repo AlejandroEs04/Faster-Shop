@@ -74,12 +74,12 @@
     transition: all linear 0.2s;
 }
 .boton-carrito {
-    background-color: #F2AC00;
+    background-color: $colorSecundario;
     font-weight: 600;
     transition: all linear 0.2s;
 }
 .boton-carrito:hover {
-    background-color: darken($color: #F2AC00, $amount: 10);
+    background-color: darken($color: $colorSecundario, $amount: 10);
 }
 .boton-comprar:hover {
     background-color: lighten($color: #11234d, $amount: 10);

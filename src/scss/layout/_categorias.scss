@@ -1,13 +1,18 @@
 .gris {
-    background-color: $gris;
+    background-color: $blanco;
     border-bottom: 2px solid $negro;
 }
 .categorias {
-    margin: 2rem;
-
-    a {
-        margin-top: 3rem;
-    }
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill, 
+        minmax(
+            20rem, 2fr
+        )
+        
+    );
+    margin: 1rem;
+    gap: 2rem;
 }
 .categoria {
     display: flex;
@@ -20,17 +25,16 @@
     p {
         font-size: 1.8rem;
     }
-    .categoria-img {
-        width: 8rem;
-        height: 8rem;
-        background-color: $blanco;
+    .categoria-img img {
+        width: 6rem;
+        height: 6rem;
+        background-color: $gris;
         border-radius: 50%;
 
         transition: all ease-in 0.2s;
     }
 }
-.categoria:hover {
-    .categoria-img {
-        background-color: $grisObscuro;
-    }
+.categoria-img:hover img {
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }

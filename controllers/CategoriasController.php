@@ -52,6 +52,18 @@ class CategoriasController {
     }
 
     public static function eliminar(Router $router) {
-        
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if($id) {
+            // Validar que el producto exista 
+            $existe = Categorias::findArray($id);
+
+            if(empty($existe)) {
+                header('location: /admin');
+            } else {
+                $existe->eliminar();
+            }
+        }
     }
 }

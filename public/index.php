@@ -59,6 +59,9 @@ $router->get('/actualizar-categoria', [CategoriasController::class, 'actualizarC
 $router->post('/actualizar-categoria', [CategoriasController::class, 'actualizarCategoria']);
 $router->get('/eliminar-categoria', [CategoriasController::class, 'eliminar']);
 
-/** LOGIN O LOGOUT **/
+
+/** COMPRAR **/
+$router->post('/comprar', [UsuarioController::class, 'comprar']);
+$router->get('/comprar', [UsuarioController::class, 'comprar']);
 
 $router->comprobarRutas();

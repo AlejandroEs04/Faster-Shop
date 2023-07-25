@@ -44,6 +44,11 @@ class ActiveRecord {
 
         $resultado = self::$db->query($query);
 
+        if($resultado) {
+            // Redireccionar al usuario.
+            header('Location: /admin');
+        }
+
         return [
             'resultado' =>  $resultado,
             'id' => self::$db->insert_id
@@ -64,9 +69,12 @@ class ActiveRecord {
         $query .= join(', ', $valores);
         $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
         $query .= " LIMIT 1";
-
         $resultado = self::$db->query($query);
 
+        if($resultado) {
+            // Redireccionar al usuario.
+            header('Location: /admin');
+        }
         return $resultado;
     }
 
@@ -77,7 +85,8 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
 
         if ($resultado) {
-            #$this->borrarImagen();
+
+            $this->borrarImagen();
             header('location: /admin');
         }
     }
@@ -100,7 +109,8 @@ class ActiveRecord {
 
     // Busca una propiedad por su id
     public static function find($id) {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE id = ${id}";
+        $query = "SELECT * FROM " . static::$tabla . " WHERE id = ${id} AND usuario = ${id}";
+        debuguear($query);
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
@@ -111,11 +121,38 @@ class ActiveRecord {
         return array_shift($resultado);
     }
 
+    public static function getTwoVariables($variable1, $variable2, $id1, $id2) {
+        $query = "SELECT * FROM carrito WHERE ${variable1} = ${id1} AND ${variable2} = ${id2}";
+        $resultado = self::consultarSQL($query);
+        return array_shift($resultado);
+    }
+
     // Busca un registro por su id y columna
     public static function where($columna, $valor) {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE ${columna} = '${valor}'";
         $resultado = self::consultarSQL($query);
         return $resultado;
+    }
+
+    public static function range($columna, $valores) {
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE ${columna} ${valores}";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    public static function getData($data = [], $id) {
+        $query = "SELECT ";
+        $i = 0;
+        foreach($data as $dato) {
+            if($i === 1) {
+                $query .= ", ";
+            }
+            $query .= $dato . " ";
+            $i = $i + 1;
+        }
+        $query .= "FROM " . static::$tabla . " WHERE id = '${id}'";
+        $resultado = self::consultarSQL($query);
+        return array_shift($resultado);
     }
 
     // Busca un registro por su id

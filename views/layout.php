@@ -33,7 +33,7 @@
                     <a href="/logout"><img src="build/img/logout.svg" alt="Cerrar sesion"></a>
                 <?php endif; ?>
                 <a href="/<?php if($admin === '1'){echo 'admin';} else {echo 'usuario?id=' . $id;} ?>"><img src="build/img/usuario.svg" alt="usuario"></a>
-                <a href="/carrito?id=<?php echo $id; ?>"><img src="build/img/carrito.svg" alt="carrito"></a>
+                <a href="/usuario?id=<?php echo $id; ?>#carrito"><img src="build/img/carrito.svg" alt="carrito"></a>
             </div>
         </div>
     </header>

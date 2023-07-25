@@ -8,6 +8,11 @@ function incluirTemplate( string $nombre ) {
     include TEMPLATES_URL . "/${nombre}.php";
 }
 
+function incluirTemplateArray( string $nombre, $info) {
+    $_POST["info"] = $info;
+    include TEMPLATES_URL . "/${nombre}.php";
+}
+
 function debuguear($variable) {
     echo "<pre>";
     var_dump($variable);
@@ -37,6 +42,10 @@ function mostrarNotificacion($resultado) {
             $mensaje = 'Eliminado Correctamente';
         break;
 
+        case 4:
+            $mensaje = 'Su producto se agrego correctamente';
+        break;
+
         default:
             $mensaje = false;
         break;
@@ -44,3 +53,15 @@ function mostrarNotificacion($resultado) {
 
     return $mensaje;
 }
+
+function validarORedireccionar(string $url) {
+    // Validar que la URL sea un id valido
+    $id = $_GET['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+
+    if (!$id) {
+        header("Location: ${url}");
+    }
+
+    return $id;
+} 

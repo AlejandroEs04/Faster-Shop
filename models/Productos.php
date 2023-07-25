@@ -5,7 +5,7 @@ namespace Model;
 class Productos extends ActiveRecord {
     /** Base de datos **/
     protected static $tabla = 'productos';
-    protected static $columnasDB = ['id', 'productName', 'description', 'price', 'inventory', 'image', 'categoriaID'];
+    protected static $columnasDB = ['id', 'productName', 'description', 'price', 'inventory', 'image', 'categoriaID', 'proveedorID', 'precioCosto', 'iva'];
 
     public $id;
     public $productName;
@@ -14,6 +14,9 @@ class Productos extends ActiveRecord {
     public $inventory;
     public $image;
     public $categoriaID;
+    public $proveedorID;
+    public $precioCosto;
+    public $iva;
 
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;
@@ -22,7 +25,10 @@ class Productos extends ActiveRecord {
         $this->price = $args['price'] ?? '';
         $this->inventory = $args['inventory'] ?? '';
         $this->image = $args['image'] ?? '';
-        $this->categoriaID = $args['categoriaID'] ?? '';
+        $this->categoriaID = $args['categoriaID'] ?? null;
+        $this->proveedorID = $args['proveedorID'] ?? null;
+        $this->precioCosto = $args['precioCosto'] ?? null;
+        $this->iva = $args['iva'] ?? null;
     }
 
     // Validacion

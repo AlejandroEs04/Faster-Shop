@@ -1,19 +1,52 @@
+.usuario {
+    span {
+        font-weight: $regular;
+        color: lighten($color: $colorPrimario, $amount: 20);
+    }
+}
+.contenedor-opciones {
+    display: flex;
+    gap: 1rem;
+    border-radius: 0.5rem;
+    background-color: $gris;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 1px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+    img {
+        width: 100%;
+        max-width: 10rem;
+    }
+}
+.img-opcion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .opciones {
     display: flex;
     flex-direction: column;
     
 }
 .opcion {
-    border: 1px solid $negro;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1.2rem;
+    
     color: $negro;
+
+    p {
+        font-size: 1.5rem;
+    }
+
+    transition: all ease-in-out 0.2s 0.1s;
 }
 @media (min-width: $desktop) {
     .opciones {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
+        gap: 2rem;
     }
+}
+.contenedor-opciones:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
