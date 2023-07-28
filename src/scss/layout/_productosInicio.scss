@@ -1,10 +1,16 @@
 .contenedor30-70 {
-    grid-template-columns: minmax(25rem, 20%) auto;
+    display: flex;
+    flex-direction: column;
 }
 .barra-izquierda {
-    border-right: 2px solid $negro;
+    border: none;
+    border-bottom: 2px solid $negro;
+    width: 100%;
     background-color: $blanco;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     h3 {
         font-weight: $regular;
     }
@@ -16,6 +22,7 @@
 }
 .catalogo {
     height: 100%;
+    max-width: 100vw;
     padding: 4rem;
 
     span {
@@ -55,8 +62,10 @@
 
     transition: all linear 0.2s 0.2s;
 }
-.producto:hover {
-    transform: scale(1.05);
+.productosInicio {
+    .producto:hover {
+        transform: scale(1.05);
+    }
 }
 .productoContenedor {
     color: $negro;
@@ -85,12 +94,9 @@
 }
 @media (max-width: $tablet) {
     .contenedor30-70 {
-        display: flex;
-        flex-direction: column;
+        
     }
     .barra-izquierda {
-        border: none;
-        border-bottom: 2px solid $negro;
-        width: 100%;
+        
     }
 }

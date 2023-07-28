@@ -46,6 +46,8 @@
 
     </footer>
 
+    <script src="https://www.paypal.com/sdk/js?client-id=AZSvRWxB5C4xM6SKSwpJ5vBVH-XnsGhWrwH5877g0iyA-guJx5jRSqkamZcQA8466_XYahSWCe3hXsAu&currency=USD"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="build/js/bundle.min.js"></script>
 </body>
 </html>

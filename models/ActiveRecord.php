@@ -41,12 +41,11 @@ class ActiveRecord {
         $query .= " ) VALUES ('";
         $query .= join("', '", array_values($atributos));
         $query .= "') ";
-
         $resultado = self::$db->query($query);
 
         if($resultado) {
             // Redireccionar al usuario.
-            header('Location: /admin');
+            header('Location: /admin?resultado=1');
         }
 
         return [
@@ -73,7 +72,7 @@ class ActiveRecord {
 
         if($resultado) {
             // Redireccionar al usuario.
-            header('Location: /admin');
+            header('Location: /admin?resultado=2');
         }
         return $resultado;
     }
@@ -85,9 +84,16 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
 
         if ($resultado) {
-
             $this->borrarImagen();
-            header('location: /admin');
+            header('location: /admin?resultado=3');
+        }
+    }
+
+    // Eliminar la imagen de las carpetas
+    public function borrarImagen() {
+        $existeArchivo =  file_exists(CARPETAS_IMAGENES . $this->imagen);
+        if ($existeArchivo) {
+            unlink(CARPETAS_IMAGENES . $this->imagen);
         }
     }
 
@@ -109,8 +115,7 @@ class ActiveRecord {
 
     // Busca una propiedad por su id
     public static function find($id) {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE id = ${id} AND usuario = ${id}";
-        debuguear($query);
+        $query = "SELECT * FROM " . static::$tabla . " WHERE id = ${id}";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
@@ -236,15 +241,6 @@ class ActiveRecord {
         }
     }
 
-    // Eliminar archivo
-    public function borrarImagen() {
-        $existeArchivo =  file_exists(CARPETAS_IMAGENES . $this->imagen);
-
-            if ($existeArchivo) {
-                unlink(CARPETAS_IMAGENES . $this->imagen);
-            }
-    }
-
     /** VALIDACION **/
     public static function getErrores() {
         return static::$errores;
@@ -259,5 +255,50 @@ class ActiveRecord {
     public function validar() {
         static::$errores = [];
         return static::$errores;
+    }
+
+    public function guardarUsuario() {
+        if(!is_null($this->id)) {
+            // Si un elemento tiene un id, se actualizara
+            $resultado = $this->actualizarUsuario();
+        } else {
+            // Si no tiene un id, se creara un nuevo registro
+            $resultado = $this->crearUsuario();
+        }
+        return $resultado;
+    }
+
+    // Crear un nuevo registro
+    public function crearUsuario() {
+        // Sanitizar los datos
+        $atributos = $this->sanitizarAtributos();
+
+        // Insertar un registro a la base de datos
+        $query = " INSERT INTO " . static::$tabla . " ( ";
+        $query .= join(', ', array_keys($atributos));
+        $query .= " ) VALUES ('";
+        $query .= join("', '", array_values($atributos));
+        $query .= "') ";
+        $resultado = self::$db->query($query);
+
+        return $resultado;
+    }
+
+    // Actualizar un nuevo registro
+    public function actualizarUsuario() {
+        // Sanitizar los datos
+        $atributos = $this->sanitizarAtributos();
+
+        $valores = [];
+        foreach($atributos as $key => $value) {
+            $valores[] = "{$key}='{$value}'";
+        }
+
+        $query = "UPDATE " . static::$tabla . " SET ";
+        $query .= join(', ', $valores);
+        $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
+        $query .= " LIMIT 1";
+        $resultado = self::$db->query($query);
+        return $resultado;
     }
 }

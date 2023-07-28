@@ -18,11 +18,22 @@
     <?php incluirTemplateArray('Filtros', $info) ?>
 
     <div class="catalogo" id="productos">
-        <h2>Productos</h2>
-        <div class="productos">
-            <?php foreach($productos as $producto): ?>
-                <?php incluirTemplateArray('Producto', $producto) ?>
-            <?php endforeach; ?>
+        <div class="contenedorSlab">
+            <h2>Mas Vendidos</h2>
+            <div class="productoSlide">
+                <?php foreach($productosAll as $producto): ?>
+                    <?php incluirTemplateArray('Producto', $producto) ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        
+
+        <div class="listaProductos">
+            <?php 
+                foreach($categoriasSlide as $categoria): 
+                    incluirTemplateArray('ProductosCategorias', $categoria);
+                endforeach;
+            ?>
         </div>
     </div>
 </div>

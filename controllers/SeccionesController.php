@@ -28,7 +28,17 @@ class SeccionesController {
         }
 
         $producto = Productos::findArray($id);
-
+        $sameProducts = Productos::where('categoriaID', $producto->categoriaID);
+        $i = 0;
+        foreach($sameProducts as $sameProduct) {
+            if($sameProduct->id === $producto->id) {
+                
+            } else {
+                $sameProducts[$i] = $sameProduct;
+                $i++;
+            }
+        }
+        debuguear($sameProduct);
         $errores = Usuarios::getErrores();
 
         $errores = $errores['error'];

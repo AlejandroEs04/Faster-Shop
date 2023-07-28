@@ -6,10 +6,29 @@
     width: 100%;
     background-color: $colorPrimario;
     color: $blanco;
+    position: fixed;
+    height: 15rem;
+    z-index: 4;
+    top: 0;
+
+    a {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        .img {
+            width: 100%;
+        }
+    }
 }
-@media (min-width: $desktop) {
+@media (min-width: $tablet) {
     .header {
+        height: 8rem;
         flex-direction: row;
+
+        a {
+            width: auto;
+        }
     }
 }
 .busqueda {

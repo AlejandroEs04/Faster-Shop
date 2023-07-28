@@ -1,19 +1,18 @@
-@media (max-width: $tablet) {
-    .contenedor-admin {
-        display: flex;
-        flex-direction: column;
-    }
-    .contenedor {
-        width: 100%;
-    }
-}
 .contenedor {
     padding: 2rem;
 }
 .contenedor-admin {
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 10%;
 }
 .admin {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    h3 {
+        margin: 1rem;
+    }
     a {
         background-color: $colorPrimario;
         color: $blanco;
@@ -71,8 +70,18 @@ table {
     border-style: solid;
     padding: 1rem;
     width: 100%;
+
+    tr {
+        height: auto;
+    }
     
     td {
+        height: 100%;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         img {
             width: 8rem;
         }

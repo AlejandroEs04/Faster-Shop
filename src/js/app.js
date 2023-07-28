@@ -1,6 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
-  //contenedorHeightSize();
   updateProductList();
+});
+
+$(document).ready(function(){
+  // Obtener estados
+  $.ajax({
+    type: "POST",
+    url: "procesar-estados",
+    data: { estados : "Mexico" } 
+  }).done(function(data){
+    $("#jmr_contacto_estado").html(data);
+  });
+
+  // Obtener municipios
+  $("#jmr_contacto_estado").change(function(){
+  var estado = $("#jmr_contacto_estado option:selected").val();
+  $.ajax({
+  type: "POST",
+  url: "procesar-estados",
+  data: { municipios : estado } 
+  }).done(function(data){
+  $("#jmr_contacto_municipio").html(data);
+  });
+  });
 });
 
 // Obtener referencias a los elementos HTML
@@ -80,3 +102,51 @@ function search_barra() {
       }
   }
 }
+
+/** Botones PAYPAL */
+paypal.Buttons({
+  // Order is created on the server and the order id is returned
+  createOrder() {
+    return fetch("/my-server/create-paypal-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // use the "body" param to optionally pass additional order information
+      // like product skus and quantities
+      body: JSON.stringify({
+        cart: [
+          {
+            sku: "YOUR_PRODUCT_STOCK_KEEPING_UNIT",
+            quantity: "YOUR_PRODUCT_QUANTITY",
+          },
+        ],
+      }),
+    })
+    .then((response) => response.json())
+    .then((order) => order.id);
+  },
+  // Finalize the transaction on the server after payer approval
+  onApprove(data) {
+    return fetch("/my-server/capture-paypal-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        orderID: data.orderID
+      })
+    })
+    .then((response) => response.json())
+    .then((orderData) => {
+      // Successful capture! For dev/demo purposes:
+      console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+      const transaction = orderData.purchase_units[0].payments.captures[0];
+      alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+      // When ready to go live, remove the alert and show a success message within this page. For example:
+      // const element = document.getElementById('paypal-button-container');
+      // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+      // Or go to another URL:  window.location.href = 'thank_you.html';
+    });
+  }
+}).render('#paypal-button-container');

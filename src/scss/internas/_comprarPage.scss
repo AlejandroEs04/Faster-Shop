@@ -17,7 +17,78 @@
         }
         .grid2 span {
             text-transform: uppercase;
-            color: $colorPrimario
+            color: $colorPrimario;
         }
+    }
+    .contenido-comprar {
+        margin: 3rem 10%;
+        display: grid;
+        grid-template-columns: 60% auto;
+    }
+    .contenedor-seccion-comprar {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem 4rem;
+        
+
+        .divForm {
+            padding: 2rem 0;
+        }
+
+        .formulario {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            .input {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                label, input, select {
+                    font-size: 1.6rem;
+                }
+                label {
+                    font-weight: $bold;
+                }
+                input, select {
+                    padding: 0.5rem;
+                    border-radius: 0.5rem;
+                    border: 1px solid $gris;
+                }
+            }
+            .dosInput {
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+            }
+            .dosInput div {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+            }
+            .boton-enviar {
+                font-size: 1.6rem;
+                padding: 0.8rem;
+                width: min-content;
+                border-radius: 0.5rem;
+            }
+        }
+    }
+}
+.contenedorSombra {
+    box-shadow: 0 0 10px 6px $gris;
+}
+.Info-comprar {
+    p {
+        font-size: 2rem;
+    }
+    span {
+        font-weight: $bold;
+    }
+    .total {
+        margin-top: 2rem;
+        font-size: 2.4rem;
     }
 }

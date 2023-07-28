@@ -59,8 +59,11 @@
                         <p><span>Precio: </span> $<?php echo $productos[$i]->price * $productoCarrito->cantidad; ?></p>
                         <form method="post" action="/carrito?id=<?php echo $productoCarrito->productoId; ?>">
                             <input type="number" name="cantidadInput" value="<?php echo $productoCarrito->cantidad; ?>">
-                            <input type="submit"  class="btn actualizar" value="Actualizar">
-                            <input type="submit" name="eliminar" class=" eliminar" value="Eliminar">
+                            <div>
+                                <input type="submit"  class="btn actualizar" value="Actualizar">
+                                <input type="submit" name="eliminar" class=" eliminar" value="Eliminar">
+                            </div>
+                            
                         </form>
                     </div>
                 </div>
@@ -72,18 +75,14 @@
         </div>
         
         <div class="contenedor-blanco texto textoPagar">
-            <form method="POST" action="/comprar?id=<?php echo $usuario->id; ?>&productoId=<?php echo $productoCarrito->productoId ?>">
-                <p><span>Productos: </span><?php echo $cantidad; ?> productos</p>
-                <p><span>Subtotal: </span>$<?php echo $total; ?> mxn</p>
-                <input hidden value="<?php echo $cantidad; ?>" name="compra['cantidad']">
-                <input hidden value="<?php echo $total; ?>" name="compra['total']">
-
+            <form method="POST" action="/comprar?id=<?php echo $usuario->id; ?>">
+                <div class="Info-comprar">
+                    <p><span>Productos Totales: </span><?php echo $cantidad; ?></p>
+                    <p><span>Subtotal: </span>$<?php echo $total; ?> mxn</p>
+                    <p><span>Costo de envio: </span>$99 mxn</p>
+                    <p class="total"><span>Total: </span>$<?php echo $total + 99 ?> mxn</p>
+                </div>
                 <input type="submit" value="Pagar Ahora" class="boton btn-enviar">
-            </form>
-            
-            <form>
-                <label>Para saber el costo de envio, introduzca su codigo postal</label>
-                <input type="number" name="codigoPostal" >
             </form>
 
         </div>

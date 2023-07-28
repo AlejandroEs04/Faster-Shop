@@ -10,6 +10,7 @@
         <?php endif;
     endif;
 ?>
+<div class="contenedor">
 <div class="contenedor-producto">
     <div class="imagen-producto">
         <img src="imagenes/<?php echo $producto->image ?>" alt="Imagen Producto">
@@ -43,4 +44,5 @@
 
 <div class="contenedor">
     <h2>Hola</h2>
+</div>
 </div>

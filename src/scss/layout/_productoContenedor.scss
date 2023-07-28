@@ -1,0 +1,36 @@
+.listaProductos {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    border-top: 2px solid $grisObscuro;
+    margin-top: 3rem;
+
+    .contenedorSlab {
+        margin: 1rem;
+    }
+}
+.productoSlide {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x;
+    overflow-y: hidden;
+    padding: 1.5rem;
+    padding-bottom: 0.5rem;
+
+    .producto {
+        min-width: 20rem;
+        max-width: 20rem;
+    }
+}
+.productoSlide::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.productoSlide::-webkit-scrollbar:horizontal {
+    height: 5px;
+    margin-top: -1rem;
+}
+.productoSlide::-webkit-scrollbar-thumb {
+    background-color: $colorPrimario;
+    border-radius: 2rem;
+}

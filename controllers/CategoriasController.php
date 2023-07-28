@@ -46,8 +46,41 @@ class CategoriasController {
     }
 
     public static function actualizarCategoria(Router $router) {
-        $router->render('categorias/actualizar', [
 
+        $id = validarORedireccionar('/admin');
+        $categoria = Categorias::findArray($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $_POST['category']['id'] = $_GET['id'];
+            $_POST['category']['image'] = $categoria->image;
+            $categoria = new Categorias($_POST['category']);
+
+            // Subida de archivos
+            // Generar un numero unico para la imagen
+            $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
+
+            if($_FILES['category']['tmp_name']['image']) {
+                // Realiza un resize a la imagen con intervetion
+                $image = Image::make($_FILES['category']['tmp_name']['image']) -> fit(800, 800);
+                $categoria->setImagen($nombreImagen);
+            }
+
+            $errores = $categoria->validar();
+
+            // Verificar si el arreglo de errores esta vacio 
+            if(empty($errores)) {
+                if($_FILES['category']['tmp_name']['image']) {
+                    // Almacenar imagen
+                    $image->save(CARPETAS_IMAGENES . $nombreImagen);
+                }
+
+                $categoria->guardar();
+            }
+        }
+
+        $router->render('categorias/actualizar', [
+            'categoria' => $categoria,
+            'errores' => $errores
         ]);
     }
 

@@ -1,5 +1,17 @@
-<div class="contenedor-grid2 contenedor-admin">
-    <div class="contenedor2">
+<?php 
+    $resultado = $_GET['resultado'];
+    if($resultado):
+        $mensaje = mostrarNotificacion( intval( $resultado) );
+        if($mensaje): ?>
+            <a href="/carrito?id=<?php echo $usuarioId; ?>" class="mensaje exito">
+                <p><?php echo $mensaje; ?></p>
+                <img src="build/img/carrito.svg"alt="mensaje de exito">
+            </a>
+        <?php endif;
+    endif;
+?>
+<div class="contenedor-admin">
+    <div class="contenedor2 admin-funciones">
         <h2>Acciones</h2>
 
         <div class="acciones admin">
@@ -58,7 +70,7 @@
                                 <td><?php echo $categoria->id ?></td>
                                 <td><?php echo $categoria->categoryName ?></td>
                                 <td><img src="imagenes/<?php echo $categoria->image ?>" alt="imagen produto"></td>
-                                <td class="flex"><a href="/actualizar-categoria?id=<?php echo $categoria->id; ?>">Actualizar</a><a href="/eliminar-categoria?id=<?php echo $categoria->id; ?>" class="no-fondo"><img src="build/img/basura.svg" alt="Eliminar producto"></a></td>
+                                <td class="flex botones"><a href="/actualizar-categoria?id=<?php echo $categoria->id; ?>">Actualizar</a><a href="/eliminar-categoria?id=<?php echo $categoria->id; ?>" class="no-fondo"><img src="build/img/basura.svg" alt="Eliminar producto"></a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -67,8 +79,7 @@
             </div>
         </div>
     </div>
-
-    <div class="contenedor2 negro">
-        <h2>Compras</h2>
-    </div>
+</div>
+<div class="contenedor2 negro">
+    <h2>Compras</h2>
 </div>

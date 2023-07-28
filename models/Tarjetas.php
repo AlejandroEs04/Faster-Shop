@@ -4,10 +4,10 @@ namespace Model;
 
 class Tarjetas extends ActiveRecord {
     protected static $tabla = 'tarjetas';
-    protected static $columnasDB = ['id', 'idUsuario', 'tipo', 'numeroTarjeta', 'fechaVencimiento', 'nombreTarjeta', 'codigoCVV'];
+    protected static $columnasDB = ['id', 'usuarioId', 'tipo', 'numeroTarjeta', 'fechaVencimiento', 'nombreTarjeta', 'codigoCVV'];
 
     public $id;
-    public $idUsuario;
+    public $usuarioId;
     public $tipo;
     public $numeroTarjeta;
     public $fechaVencimiento;
@@ -16,7 +16,7 @@ class Tarjetas extends ActiveRecord {
 
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;
-        $this->idUsuario = $args['idUsuario'] ?? '';
+        $this->usuarioId = $args['usuarioId'] ?? '';
         $this->tipo = $args['tipo'] ?? '';
         $this->numeroTarjeta = $args['numeroTarjeta'] ?? '';
         $this->fechaVencimiento = $args['fechaVencimiento'] ?? '';
@@ -25,7 +25,7 @@ class Tarjetas extends ActiveRecord {
     }
 
     public function validar() {
-        if (!$this->idUsuario) {
+        if (!$this->usuarioId) {
             self::$errores[] = "Hay un error, por favor, intentelo mas tarde";
         }
         if (!$this->tipo) {

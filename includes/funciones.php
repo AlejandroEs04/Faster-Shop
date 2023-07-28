@@ -1,5 +1,8 @@
 <?php 
 
+use MmoAndFriends\Mexico\Mexico;
+use MmoAndFriends\Mexico\MexicoTrait;
+
 define('TEMPLATES_URL', __DIR__ . '/templates');
 define('FUNCIONES_URL', __DIR__ . 'funciones.php');
 define('CARPETAS_IMAGENES', $_SERVER['DOCUMENT_ROOT'] . '/imagenes/');
@@ -65,3 +68,15 @@ function validarORedireccionar(string $url) {
 
     return $id;
 } 
+
+function obtenerEstados() {
+    $estados = Mexico::estados();
+
+    return $estados;
+}
+
+function obtenerCiudad($state) {
+    $ciudades = Mexico::municipiosDeEstado($state);
+
+    return $ciudades;
+}

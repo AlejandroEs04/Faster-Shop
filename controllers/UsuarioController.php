@@ -5,7 +5,9 @@ namespace Controllers;
 use GuzzleHttp\Psr7\Header;
 use Model\Carrito;
 use Model\Categorias;
+use Model\Direcciones;
 use Model\Productos;
+use Model\Tarjetas;
 use Model\Usuarios;
 use MVC\Router;
 
@@ -128,13 +130,72 @@ class UsuarioController {
     }
 
     public static function comprar(Router $router) {
-        $productoId = $_GET['$productoId'];
-        $usuarioId = $_GET['id'];
 
+        $usuarioId = $_SESSION['idOriginal'];
+        // Obtener la informacion del usuario
         $usuario = Usuarios::findArray($usuarioId);
 
+        // Obtener si existen direcciones o tarjetas vinculadas con el usuario
+        $direcciones = Direcciones::where('usuarioId', $usuarioId);
+
+        if($_GET['productoId']){
+            $producto = Productos::findArray($_GET['productoId']);
+
+            $cantidad = 1;
+            $total = $producto->price;
+        } else {
+            // Obtener el carrito del usuario
+            $carrito = Carrito::where('usuarioId', $usuarioId);
+
+            $i = 0;
+            $total = 0;
+            $cantidad = 0;
+            foreach($carrito as $productosCarrito) {
+                $productos[$i] = Productos::findArray($productosCarrito->productoId);
+                $total = $total + $productosCarrito->precio;
+                $cantidad = $cantidad + $productosCarrito->cantidad;
+                $i++;
+            }
+        }
+
+        if(empty($direcciones)) {
+            $InluirDireccion = 'FormularioDireccion';
+        } else {
+            $InluirDireccion = 'InformacionDireccion';
+        }
+
         $router->render('usuario/comprar', [
-            'usuario' => $usuario
+            'usuario' => $usuario,
+            'direcciones' => $direcciones,
+            'InluirDireccion' => $InluirDireccion,
+            'carrito' => $carrito,
+            'productos' => $productos,
+            'producto' => $producto,
+            'total' => $total,
+            'cantidad' => $cantidad
         ]);
+    }
+
+    public static function nuevaDireccion(Router $router) {
+        $direccion = new Direcciones;
+        $idUsuario = $_SESSION['idOriginal'];
+        $_POST['direccion']['usuarioId'] = $idUsuario;
+
+        $direccion = new Direcciones($_POST['direccion']);
+
+        $errores = $direccion->validar();
+        if(empty($errores)) {
+            $direccion->guardarUsuario();
+
+            header('Location: /comprar');
+        }
+    }
+
+    public static function nuevaTarjeta(Router $router) {
+        $tarjeta = new Tarjetas;
+        $idUsuario = $_SESSION['idOriginal'];
+        $_POST['tarjeta']['usuarioId'] = $idUsuario;
+
+        debuguear($_POST);
     }
 }

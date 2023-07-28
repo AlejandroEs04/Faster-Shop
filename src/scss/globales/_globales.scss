@@ -1,9 +1,8 @@
 html {
     font-size: 62.5%;
     box-sizing: border-box;
-
-    display: flex;
     height: 100%;
+    display: flex;
 }
 *, *:before, *:after {
     box-sizing: inherit;
@@ -13,11 +12,27 @@ body {
     line-height: 1.5;
     margin: 0;
     background-color: $color1;
-
+    overflow-x: hidden;
     flex: 1;
 }
+html::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+html::-webkit-scrollbar:vertical {
+    width: 8px;
+}
+html::-webkit-scrollbar-thumb {
+    background-color: darken($color: $colorSecundario, $amount: 20);
+    border-radius: 2rem;
+}
 main {
+    margin-top: 15rem;
     height: 100%;
+}
+@media (min-width: $tablet) {
+    main{
+        margin-top: 8rem;
+    }
 }
 a {
     text-decoration: none;

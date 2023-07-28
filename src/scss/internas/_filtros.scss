@@ -1,8 +1,6 @@
 .filter-bar {
     display: flex;
-    flex-direction: column;
     gap: 3rem;
-    justify-content: space-between;
     padding: 10px;
     margin: 0 20% 2rem 20%;
 
@@ -34,4 +32,9 @@
   .product-item {
     border: 1px solid #ccc;
     padding: 10px;
+  }
+  .filtro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
   }

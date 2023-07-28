@@ -29,6 +29,8 @@ $router->get('/categoria', [SeccionesController::class, 'categoria']);
 $router->get('/usuario', [UsuarioController::class, 'index']);
 $router->get('/carrito', [UsuarioController::class, 'carrito']);
 $router->post('/carrito', [UsuarioController::class, 'carrito']);
+$router->post('/usuario/nueva-direccion', [UsuarioController::class, 'nuevaDireccion']);
+$router->post('/usuario/nueva-tarjeta', [UsuarioController::class, 'nuevaTarjeta']);
 
 // Login and logout
 $router->get('/inicio-sesion', [AuthController::class, 'login']);
@@ -63,5 +65,7 @@ $router->get('/eliminar-categoria', [CategoriasController::class, 'eliminar']);
 /** COMPRAR **/
 $router->post('/comprar', [UsuarioController::class, 'comprar']);
 $router->get('/comprar', [UsuarioController::class, 'comprar']);
+
+$router->post('/procesar-estados', [PaginasController::class, 'obtener']);
 
 $router->comprobarRutas();

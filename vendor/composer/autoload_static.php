@@ -19,6 +19,7 @@ class ComposerStaticInite3b6202bbfdc046c69359270174e608a
         'M' => 
         array (
             'Model\\' => 6,
+            'MmoAndFriends\\Mexico\\' => 21,
             'MVC\\' => 4,
         ),
         'I' => 
@@ -50,6 +51,10 @@ class ComposerStaticInite3b6202bbfdc046c69359270174e608a
         'Model\\' => 
         array (
             0 => __DIR__ . '/../..' . '/models',
+        ),
+        'MmoAndFriends\\Mexico\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mmo-and-friends/estados-municipios-mexico/src',
         ),
         'MVC\\' => 
         array (
